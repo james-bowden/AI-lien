@@ -13,7 +13,7 @@
 	* Install SDL IMG.
 	* Make the files using 'make clean all'.
 	* Run the game with 'make run’. You can keep using this command and do not need to remake.
-	* You can change certain parameters: stamina, player velocity, # bullets, easy/med/hard stalk radius (demo/game.c); alien velocity, delay time (alien.c); prices, # coins and hiding spots spawned (map.c).
+	* You can change certain parameters: stamina, player velocity, # bullets, easy/med/hard stalk radius (demo/game.c); alien velocity, delay time (alien.c); prices, # coins and hiding spots spawned (map.c). If you change parameters, 'make clean all' again before you 'make run' again.
 
 * Controls: 
 	* Arrow keys to move
@@ -30,10 +30,10 @@
 * What's inside:
 	* Everything is written from scratch in C using only the included libraries and SDL (for graphics rendering).
 	* All components were tested as they were developed. Unfortunately, many tests for earlier components have been removed, but you can see an example in ‘tests/test_suite_forces.c’.
-	* Map is initialized as 100*100 grid with backing array that contains various "objects" in it. 
+	* Map is initialized as 100 by 100 grid with backing array that contains various "objects" in it. 
 	* Objects, text, and images are rendered using SDL 2 (incl. TTF, IMG packages). 
 	* Alien navigates the map using A*, which takes advantage of a priority queue struct.
-	* Collisions are detected using a combination of a bounding box method to filter and then a separating axis method to confirm and determine bounce angle.
+	* Collisions are detected using a combination of a bounding box method to filter out possible hits and then a more expensive separating axis method to confirm and determine bounce angle.
 	* Abstraction: Map built from scene (collection of bodies, built off of polygon, built off of vectors and lists), objects (abstraction on bodies to make more usable for game), and nodes (abstraction on objects to make suitable for pathfinding). Ailien is built off of map, objects, nodes, and sorted list (priority queue, used for A*). Forces built to work with scene, and collisions implemented as instantaneous impulses inside of the force set up.
 
 
